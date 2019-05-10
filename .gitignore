@@ -1,5 +1,3 @@
-!*.py
-!.md
-__pycache__/*
-Python Regex/*
-
+**/__pycache__
+**/Python Regex
+!.py
