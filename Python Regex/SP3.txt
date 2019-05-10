@@ -1,0 +1,26 @@
+D_DRR_FUNCLIB.FUNCLIB.FieldFormula -- SQLExec(SQL.D_DEFINITIVE_REG_EXISTS_SQL, D_DRR_EOC_VW.EMPLID.Value, D_DRR_EOC_VW.EMPL_RCD.Value, D_DRR_EOC_VW.D_PLANNING_ID.Value, &D_l_str_Def_Reg_Exist);
+D_DRR_FUNCLIB.FUNCLIB.FieldFormula -- SQLExec(SQL.D_GET_EMP_RES_ADDR_SQL, D_DRR_EOC_VW.EMPLID.Value, &D_l_str_Country, &D_l_str_City, &D_l_str_Postal);
+D_DRR_FUNCLIB.FUNCLIB.FieldFormula -- SQLExec(SQL.D_PVR_LOC_CITY_POSTAL_SQL, D_DRR_EOC_VW.LOCATION.Value, D_DRR_EOC_VW.BEGIN_DT.Value, &D_l_str_LocDescr, &D_l_str_LocCity, &D_l_str_LocPstl);
+D_DRR_FUNCLIB.FUNCLIB.FieldFormula -- &D_l_sql_TrnasportMode = CreateSQL(SQL.D_GET_XLAT_LIST_DESCR_SQL, "D_TRANSPORT_MODE", "RP", %Language);
+D_DRR_FUNCLIB.FUNCLIB.FieldFormula -- &D_l_sql_Temp = CreateSQL(SQL.D_GET_XLAT_MIL_DESCR_SQL, %Language);
+D_DRR_FUNCLIB.FUNCLIB.FieldFormula -- &D_l_sql_Temp = CreateSQL(SQL.D_GET_XLAT_CIV_DESCR_SQL, %Language);
+D_DRR_FUNCLIB.FUNCLIB.FieldFormula -- &D_l_sql_Temp = CreateSQL(SQL.D_GET_DIN_MIL_G_SQL, %Language); /* For dinner */
+D_DRR_FUNCLIB.FUNCLIB.FieldFormula -- &D_l_sql_Temp = CreateSQL(SQL.D_GET_SUP_MIL_G_SQL, %Language); /* For supper */
+D_DRR_FUNCLIB.FUNCLIB.FieldFormula -- &D_l_sql_Temp = CreateSQL(SQL.D_GET_BRKFST_DRR_SQL, %Language); /* For breakfast */
+D_DRR_FUNCLIB.FUNCLIB.FieldFormula -- SQLExec(SQL.D_IS_HOOFDOFFICIEREN_SQL, D_DRR_EOC_VW.EMPLID.Value, D_DRR_EOC_VW.EMPL_RCD.Value, D_DRR_EOC_VW.BEGIN_DT.Value, &D_l_str_Hoofdofficieren);
+D_EOC_FUNCLIB.FUNCLIB.FieldFormula -- SQLExec(SQL.D_GET_EMP_RES_ADDR_SQL, D_DRR_EOC_VW.EMPLID.Value, &D_l_str_Country, &D_l_str_City, &D_l_str_Postal);
+D_EOC_FUNCLIB.FUNCLIB.FieldFormula -- SQLExec(SQL.D_PVR_LOC_CITY_POSTAL_SQL, D_DRR_EOC_VW.LOCATION.Value, D_DRR_EOC_VW.BEGIN_DT.Value, &D_l_str_LocDescr, &D_l_str_LocCity, &D_l_str_LocPstl);
+D_DRR_EOC_CMP.GBL.D_DRR_EOC_WRK.SUBMIT_BTN.FieldChange -- SQLExec(SQL.D_DEFINITIVE_REG_EXISTS_SQL, D_DRR_EOC_VW.EMPLID.Value, D_DRR_EOC_VW.EMPL_RCD.Value, D_DRR_EOC_VW.D_PLANNING_ID.Value, &D_l_str_Def_Reg_Exist);
+D_DRR_EOC_CMP.GBL.D_DRR_EOC_WRK.SUBMIT_BTN.FieldChange -- SQLExec(SQL.D_GET_SETID_SALARY_SQL, D_DRR_EOC_VW.EMPLID.Value, D_DRR_EOC_VW.EMPL_RCD.Value, &D_c_str_SalSetId);
+D_DRR_EOC_CMP.GBL.D_DRR_EOC_WRK.SUBMIT_BTN.FieldChange -- SQLExec(SQL.D_GET_SAL_ADMIN_PLAN_SQL, D_DRR_EOC_VW.EMPLID.Value, D_DRR_EOC_VW.EMPL_RCD.Value, &D_c_str_SalAdminPlan);
+D_DRR_EOC_CMP.GBL.PostBuild -- SQLExec(SQL.D_EMP_HAS_ROADDOC_SQL, D_DRR_EOC_VW.EMPLID.Value, D_DRR_EOC_VW.BEGIN_DT.Value, &D_c_str_EmpHasRoaddoc);
+D_DRR_EOC_CMP.GBL.PostBuild -- SQLExec(SQL.D_GET_SETID_SALARY_SQL, D_DRR_EOC_VW.EMPLID.Value, D_DRR_EOC_VW.EMPL_RCD.Value, &D_c_str_SalSetId);
+D_DRR_EOC_CMP.GBL.PostBuild -- SQLExec(SQL.D_GET_SAL_ADMIN_PLAN_SQL, D_DRR_EOC_VW.EMPLID.Value, D_DRR_EOC_VW.EMPL_RCD.Value, &D_c_str_SalAdminPlan);
+D_DRR_EOC_CMP.GBL.PostBuild -- SQLExec(SQL.D_IS_WEEKEND_OR_HOLIDAY_SQL, &D_l_rst_DDR_DTL.GetRow(1).GetRecord(Record.D_DRR_DTL_TBL).D_DATE.Value, &D_l_str_WeekendHoliday);
+D_DRR_EOC_CMP.GBL.PostBuild -- SQLExec(SQL.D_IS_WEEKEND_OR_HOLIDAY_SQL, &D_l_rst_DDR_DTL.GetRow(&i).GetRecord(Record.D_DRR_DTL_TBL).D_DATE.Value, &D_l_str_WeekendHoliday);
+D_EXTRA_COST.GBL.D_DRR_EOC_WRK.SUBMIT_BTN.FieldChange -- SQLExec(SQL.D_DEFINITIVE_REG_EXISTS_SQL, D_DRR_EOC_VW.EMPLID.Value, D_DRR_EOC_VW.EMPL_RCD.Value, D_DRR_EOC_VW.D_PLANNING_ID.Value, &D_l_str_Def_Reg_Exist);
+D_EXTRA_COST.GBL.PostBuild -- SQLExec(SQL.D_IS_WEEKEND_OR_HOLIDAY_SQL, &D_l_rst_EOC_DTL.GetRow(1).GetRecord(Record.D_EOC_DTL_TBL).D_DATE.Value, &D_l_str_WeekendHoliday);
+D_EXTRA_COST.GBL.PostBuild -- SQLExec(SQL.D_IS_WEEKEND_OR_HOLIDAY_SQL, &D_l_rst_EOC_DTL.GetRow(&i).GetRecord(Record.D_EOC_DTL_TBL).D_DATE.Value, &D_l_str_WeekendHoliday);
+D_EXTRA_COST.GBL.PostBuild -- SQLExec(SQL.D_IS_WEEKEND_OR_HOLIDAY_SQL, &D_l_rst_EOC_DTL.GetRow(&i).GetRecord(Record.D_EOC_DTL_TBL).D_DATE.Value, &D_l_str_WeekendHoliday);
+D_EXTRA_COST.GBL.SavePostChange -- SQLExec(SQL.D_DRR_EXISTS_SQL, D_DRR_EOC_VW.EMPLID.Value, D_DRR_EOC_VW.EMPL_RCD.Value, D_DRR_EOC_VW.D_PLANNING_ID.Value, &D_l_str_DRR_Exist);
+D_EXTRA_COST.GBL.SavePostChange -- SQLExec(SQL.D_IS_DRR_APPROVED_SQL, D_DRR_EOC_VW.EMPLID.Value, D_DRR_EOC_VW.EMPL_RCD.Value, D_DRR_EOC_VW.D_PLANNING_ID.Value, &D_l_str_DRR_Approved);
