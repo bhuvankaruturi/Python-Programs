@@ -26,24 +26,18 @@ def least_cost_path(blocks):
     for i in range(len(blocks)):
         for j in range(len(blocks[i])):
             cost = blocks[i][j]
+            costs = []
             if i == 0 and j == 0:
-                minCost = cost
+                costs.append(cost)
             if i > 0 and j > 0:
-                currCost = cost + blocks[i-1][j-1]
-                minCost = currCost
+                costs.append(cost + blocks[i-1][j-1])
             if i > 0:
-                currCost = cost + blocks[i-1][j]
-                if currCost < minCost:
-                    minCost = currCost
+                costs.append(cost + blocks[i-1][j])
             if i > 0 and j < (len(blocks[i]) - 1):
-                currCost = cost + blocks[i][j+1]
-                if currCost < minCost:
-                    minCost = currCost
+                costs.append(cost + blocks[i-1][j+1])
             if j > 0:
-                currCost = cost + blocks[i][j-1]
-                if currCost < minCost:
-                    minCost = currCost
-            blocks[i][j] = minCost
+                costs.append(cost + blocks[i][j-1])
+            blocks[i][j] = min(costs)
     return blocks
 
 print("**********************")
